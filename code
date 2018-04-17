@@ -6,7 +6,6 @@
 %Trial = 040624 Sc1_3
 
 %I HAVEN'T TESTED ALL OF THIS
-
 close all;
 clear all;
 load TrialEvents2.mat
@@ -39,8 +38,7 @@ ss_values = [FMS_values;FMS_values+1]; %assigning values to each stimuli
 ss_values = ss_values - mean (ss_values); %normalizing the stimuli
 ss_values = ss_values/std (ss_values);
 ss_r = ss_index(randperm(length(ss_index))); % randomizing the trials order
-% assign the correct values to stimulus after randomization 
-%___________________________________________________________________________________ TESTED UP TO HERE
+% assign the correct values to stimulus after randomization
 for i = 1 : n_trials
  s(i) = ss_values (find(ss_index == ss_r (i)));
 end
@@ -49,8 +47,8 @@ end
 spike_count = zeros(13,1);
 for i = 1:length(ss_r)
  for j = 1 : 13
- r_t_raw{i,j} = TS{ss_r(i),j};
- spike_count(j) = spike_count(j) + length (Sc1_3{ss_r(i),j});
+ r_t_raw{i,j} = TS(ss_r(i));
+ spike_count(j) = spike_count(j) + length (TS(ss_r(i)));
  end
 end
 % converting the spike trains into 1 (time) x 13 (cells) matrix
