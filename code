@@ -5,7 +5,7 @@
 %Rat = N1
 %Trial = 040624 Sc1_3
 
-%I HAVEN'T TESTED THIS
+%I HAVEN'T TESTED ALL OF THIS
 
 close all;
 clear all;
@@ -22,9 +22,9 @@ N = 150; % in bins
 bin_count = trial_length/bin_size; % 3s per trial
 %% Creating the stimulus matrix s(t)
 for i = 1 : 225
- if TrialEvents2.Correct{i,1} == 1
+ if Correct(i) == 1
  stimuli (i) = 1;
- elseif TrialEvents2.Correct{i,1} == 0
+ elseif Correct(i) == 0
  stimuli (i) = 0;
  end
 end
@@ -39,7 +39,8 @@ ss_values = [FMS_values;FMS_values+1]; %assigning values to each stimuli
 ss_values = ss_values - mean (ss_values); %normalizing the stimuli
 ss_values = ss_values/std (ss_values);
 ss_r = ss_index(randperm(length(ss_index))); % randomizing the trials order
-% assign the correct values to stimulus after randomization
+% assign the correct values to stimulus after randomization 
+%___________________________________________________________________________________ TESTED UP TO HERE
 for i = 1 : n_trials
  s(i) = ss_values (find(ss_index == ss_r (i)));
 end
@@ -48,7 +49,7 @@ end
 spike_count = zeros(13,1);
 for i = 1:length(ss_r)
  for j = 1 : 13
- r_t_raw{i,j} = Sc1_3{ss_r(i),j};
+ r_t_raw{i,j} = TS{ss_r(i),j};
  spike_count(j) = spike_count(j) + length (Sc1_3{ss_r(i),j});
  end
 end
