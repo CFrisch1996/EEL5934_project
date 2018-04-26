@@ -32,9 +32,9 @@ Correct = find(stimuli==1);
 Incorrect = find(stimuli==0);
 
 ss_index = [Correct(1:n_trials/2);Incorrect(1:n_trials/2)]; %creating a N trial sample of stimulus
-FMS_values = [1];
-FMS_values = repmat(FMS_values,n_trials/2,1);
-ss_values = [FMS_values;FMS_values+1]; %assigning values to each stimuli
+Correct = [1];
+Correct = repmat(Correct,n_trials/2,1);
+ss_values = [Correct;Correct+1]; %assigning values to each stimuli
 ss_values = ss_values - mean (ss_values); %normalizing the stimuli
 ss_values = ss_values/std (ss_values);
 ss_r = ss_index(randperm(length(ss_index))); % randomizing the trials order
@@ -118,8 +118,8 @@ end
 % u is the reconstructed signal
 % f is the filter
 s = s(1:M);
-temp = inv(R'*R);
-f = temp *(R'*s');
+
+f = inv(R'*R) *(R'*s');
 u = R*f;
 % u_round = u;
 %
