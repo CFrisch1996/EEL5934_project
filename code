@@ -5,20 +5,20 @@
 %Rat = N1
 %Trial = 040624 Sc1_3
 
-%I HAVEN'T TESTED ALL OF THIS
 close all;
 clear all;
 load TrialEvents2.mat
 load TrialEvents.mat
 load Sc1_3.mat
 stimuli = zeros (225,1);
-trial_length = 3000; %in ms
-n_trials = 16; % number of trials, has to be multiplier of 4
-n_cell =13;
+trial_length = 13829; %in ms
+n_trials = 14; % number of trials, has to be multiplier of 4
+n_cell = 13;
 summary =[];
-bin_size = 20; %ms
+bin_size = 20.6403; %ms
 N = 150; % in bins
-bin_count = trial_length/bin_size; % 3s per trial
+bin_count = int16(trial_length/bin_size); % 3s per trial
+
 %% Creating the stimulus matrix s(t)
 for i = 1 : 225
  if Correct(i) == 1
