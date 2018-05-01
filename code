@@ -21,3 +21,17 @@ for i = 1:length(TrialStart)
      
      Spike_Sum = Spike_C(CorrectI(k)) + Spike_Sum;
  end       
+ 
+    Average_Correct = Spike_Sum/(length(CorrectI));
+    
+ Spike_SumI = 0;
+ 
+ IncorrectI = find(Correct == 0);
+ 
+ for q = 1:length(IncorrectI)
+     
+     Spike_SumI = Spike_C(IncorrectI(q)) + Spike_SumI;
+ end       
+ 
+    Average_Incorrect = Spike_SumI/(length(IncorrectI));
+ 
